@@ -1,22 +1,29 @@
 ﻿<!doctype html>
-<html lang="en" ng-app>
+<html ng-app="phonecatApp">
 <head>
     <meta charset="utf-8">
-    <title>Hello World</title>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../app/bower_components/jquery.js"><\/script>')</script>
+    <title>Angular Testing</title>
+    <link href="../components/bootstrap-3.1.1/css/bootstrap.css" rel="stylesheet" />      
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
     <script>window.angular || document.write('<script src="../app/bower_components/angular/angular.js"><\/script>')</script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../app/bower_components/jquery.js"><\/script>')</script>
+    <script src="13001-controller.js"></script>
     <style>
         footer { bottom: 50px; right: 50px; position: fixed; }
     </style>
 </head>
-<body>
+<body ng-controller="PhoneListCtrl">
     <h1></h1>
     <hr />
-    <h2>ng-app directive, AngularJS script tag and Double-curly binding with an expression</h2>
-    <p>a binding, denoted by double-curlies -Nothing here {{'yet' + '!'}}</p>
-    <p>a simple expression `'yet' + '!'` used in this binding -Nothing here {{'yet' + '!'}}</p>
+    <ul>
+        <li ng-repeat="phone in phones">
+            <h3>{{phone.name}}</h3>
+            <p>{{phone.snippet}}</p>
+        </li>
+    </ul>
+    <hr />
+    <p>Total number of phones: {{phones.length}}</p>
     <script>
         $(document).ready(function () {
             //Add title tag in Head

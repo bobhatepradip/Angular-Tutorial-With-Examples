@@ -1,0 +1,54 @@
+﻿<!doctype html>
+<html ng-app="phonecatApp">
+<head>
+    <meta charset="utf-8">
+    <title>Angular-Two way data binding</title>
+    <link href="../components/bootstrap-3.1.1/css/bootstrap.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script>window.angular || document.write('<script src="../app/bower_components/angular/angular.js"><\/script>')</script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../app/bower_components/jquery.js"><\/script>')</script>
+    <script src="0501-controller.js"></script>
+    <style>
+        footer { bottom: 50px; right: 50px; position: fixed; }
+    </style>
+</head>
+<body ng-controller="PhoneListCtrl">
+    <h1></h1>
+    <hr />
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <!--Sidebar content-->
+                Search:
+                <input ng-model="query">
+                Sort by:
+                <select ng-model="orderProp">
+                    <option value="name">Alphabetical (A-Z)</option>
+                    <option value="-name">Alphabetical (Z-A)</option>
+                    <option value="age">Newest</option>
+                    <option value="-age">Oldest</option>
+                </select>
+            </div>
+            <div class="col-md-10">
+                <!--Body content-->
+                <ul class="phones">
+                    <li ng-repeat="phone in phones | filter:query | orderBy:orderProp">{{phone.name}}
+          <p>{{phone.snippet}}</p>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <hr />
+    <p>Total number of phones: {{phones.length}}</p>
+    <script>
+        $(document).ready(function () {
+            //Add title tag in Head
+            $('h1').append($('title').text());
+        });
+    </script>
+    <footer><a href="http://www.thingswelearned.com">ThingsWeLearned.com</a></footer>
+</body>
+</html>

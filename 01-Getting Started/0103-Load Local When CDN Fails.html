@@ -2,7 +2,7 @@
 <html lang="en" ng-app>
 <head>
     <meta charset="utf-8">
-    <title>Hello World</title>
+    <title>Load Local When CDN Fails</title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../app/bower_components/jquery.js"><\/script>')</script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
@@ -14,9 +14,19 @@
 <body>
     <h1></h1>
     <hr />
-    <h2>ng-app directive, AngularJS script tag and Double-curly binding with an expression</h2>
+
+    <h2>Fix:</h2>
+    <pre><code>
+    ///try for CDN
+    &lt;script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"&gt;&lt;/script&gt;
+    ///if CDN fails load from local
+    &lt;script&gt;window.angular || document.write('&lt;script src="../app/bower_components/angular/angular.js"&gt;&lt;\/script&gt;')&lt;/script&gt;
+    </code></pre>
+    <h2>Test :ng-app directive, AngularJS script tag and Double-curly binding with an expression</h2>
+
     <p>a binding, denoted by double-curlies -Nothing here {{'yet' + '!'}}</p>
     <p>a simple expression `'yet' + '!'` used in this binding -Nothing here {{'yet' + '!'}}</p>
+
     <script>
         $(document).ready(function () {
             //Add title tag in Head
